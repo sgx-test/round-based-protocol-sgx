@@ -1,5 +1,5 @@
-use std::fmt::Debug;
 use log::debug;
+use std::fmt::Debug;
 
 use crate::sm::*;
 
@@ -36,10 +36,10 @@ pub use benchmark::{BenchmarkResults, Measurements};
 /// #       Party::MessageBody: std::fmt::Debug + Clone,
 /// # {
 /// let results = Simulation::new()
-///     .add_party(Party::new(1, 3))    
-///     .add_party(Party::new(2, 3))    
+///     .add_party(Party::new(1, 3))
+///     .add_party(Party::new(2, 3))
 ///     .add_party(Party::new(3, 3))
-///     .run()?;   
+///     .run()?;
 /// assert!(results.into_iter().all(|r| is_valid(&r)));
 /// # Ok(())
 /// # }
@@ -142,6 +142,12 @@ where
                 return Ok(results);
             }
         }
+    }
+}
+
+impl<P> Default for Simulation<P> {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
