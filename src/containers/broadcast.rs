@@ -7,7 +7,7 @@ use super::store_err::StoreErr;
 use super::traits::{MessageContainer, MessageStore};
 
 /// Received broadcast messages from every protocol participant
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct BroadcastMsgs<B> {
     my_ind: u16,
     msgs: Vec<B>,
@@ -15,7 +15,7 @@ pub struct BroadcastMsgs<B> {
 
 impl<B> BroadcastMsgs<B>
 where
-    B: 'static,
+    B: 'static + Clone,
 {
     /// Turns a container into iterator of messages with parties indexes (1 <= i <= n)
     pub fn into_iter_indexed(self) -> impl Iterator<Item = (u16, B)> {
@@ -76,13 +76,14 @@ impl<M> MessageContainer for BroadcastMsgs<M> {
 }
 
 /// Receives broadcast messages from every protocol participant
+#[derive(Clone)]
 pub struct BroadcastMsgsStore<M> {
     party_i: u16,
     msgs: Vec<Option<M>>,
     msgs_left: usize,
 }
 
-impl<M> BroadcastMsgsStore<M> {
+impl<M: Clone> BroadcastMsgsStore<M> {
     /// Constructs store. Takes this party index and total number of parties.
     pub fn new(party_i: u16, parties_n: u16) -> Self {
         let parties_n = usize::from(parties_n);
