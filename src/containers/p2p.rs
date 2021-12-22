@@ -131,7 +131,8 @@ impl<M> MessageStore for P2PMsgsStore<M> {
             .get_mut(party_j - 1)
             .ok_or(StoreErr::UnknownSender { sender: msg.sender })?;
         if slot.is_some() {
-            return Err(StoreErr::MsgOverwrite);
+            // not handle this.
+            return Ok(());
         }
         *slot = Some(msg.body);
         self.msgs_left -= 1;

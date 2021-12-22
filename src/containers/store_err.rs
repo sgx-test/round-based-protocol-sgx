@@ -16,6 +16,9 @@ pub enum StoreErr {
     /// Got P2P message, whereas broadcast message is expected
     #[error("unexpected P2P message (broadcast is expected)")]
     ExpectedBroadcast,
+    /// Got P2P message, whereas center message is expected
+    #[error("unexpected P2P message (center is expected)")]
+    ExpectedCenter,
     /// Got message that addressed to another party (`msg.receiver != me`)
     #[error("got message which was addressed to someone else")]
     NotForMe,

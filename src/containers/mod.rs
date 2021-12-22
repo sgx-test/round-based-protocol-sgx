@@ -3,6 +3,7 @@
 pub mod push;
 
 mod broadcast;
+mod center;
 mod p2p;
 mod store_err;
 mod traits;
