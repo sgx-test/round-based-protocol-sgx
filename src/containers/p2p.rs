@@ -124,7 +124,7 @@ impl<M> MessageStore for P2PMsgsStore<M> {
         let party_j = match Ord::cmp(&msg.sender, &self.party_i) {
             Ordering::Less => usize::from(msg.sender),
             Ordering::Greater => usize::from(msg.sender) - 1,
-            Ordering::Equal => return Err(StoreErr::ItsFromMe),
+            Ordering::Equal => return Ok(()),
         };
         let slot = self
             .msgs
