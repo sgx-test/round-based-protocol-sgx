@@ -6,6 +6,8 @@
 //! describing protocol in terms of rounds, where every round may send messages by appending
 //! them to sending queue.
 
+use std::vec::Vec;
+
 /// Collection which can only be appended by 1 element
 pub trait Push<T> {
     fn push(&mut self, element: T);

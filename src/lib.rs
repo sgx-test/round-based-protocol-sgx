@@ -35,6 +35,12 @@
 
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
+#![no_std]
+
+#[cfg(all(feature = "mesalock_sgx", not(target_env = "sgx")))]
+#[macro_use]
+extern crate sgx_tstd as std;
+
 pub mod containers;
 
 #[cfg(feature = "dev")]

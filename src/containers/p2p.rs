@@ -2,6 +2,7 @@ use std::cmp::Ordering;
 use std::ops;
 
 use crate::sm::Msg;
+use std::vec::Vec;
 
 use super::store_err::StoreErr;
 use super::traits::{MessageContainer, MessageStore};

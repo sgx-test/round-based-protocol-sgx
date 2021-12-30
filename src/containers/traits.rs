@@ -1,4 +1,5 @@
 use crate::sm::Msg;
+use std::vec::Vec;
 
 /// Message container holding received messages
 ///
