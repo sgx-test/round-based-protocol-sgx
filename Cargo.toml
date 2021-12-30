@@ -26,8 +26,6 @@ env_logger = "0.9.0"
 
 [features]
 default = ["mesalock_sgx"]
-# Exposes utils useful for testing
-dev = []
 mesalock_sgx = ["sgx_tstd"]
 
 [[test]]
