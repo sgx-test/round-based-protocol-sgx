@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+use serde::{Deserialize, Serialize};
 use std::ops;
 
 use crate::sm::Msg;
@@ -54,7 +55,7 @@ impl<M> MessageContainer for CenterMsgs<M> {
 }
 
 /// Receives broadcast messages from every protocol participant
-#[derive(Clone)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct CenterMsgsStore<M> {
     msgs: Vec<Option<M>>,
     msgs_left: usize,
