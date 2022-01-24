@@ -1,3 +1,4 @@
+use serde::{Deserialize, Serialize};
 use std::cmp::Ordering;
 use std::ops;
 
@@ -77,7 +78,7 @@ impl<M> MessageContainer for P2PMsgs<M> {
 }
 
 /// Receives P2P messages from every protocol participant
-#[derive(Clone)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct P2PMsgsStore<M> {
     party_i: u16,
     msgs: Vec<Option<M>>,

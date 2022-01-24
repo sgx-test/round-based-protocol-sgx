@@ -9,8 +9,8 @@ mod store_err;
 mod traits;
 
 pub use broadcast::*;
-pub use p2p::*;
 pub use center::*;
+pub use p2p::*;
 pub use store_err::*;
 pub use traits::*;
 
